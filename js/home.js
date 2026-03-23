@@ -23,14 +23,14 @@ function applyHomeProfilePic() {
     if (!imgEl || !defEl) return;
 
     if (picUrl && picUrl !== 'null' && picUrl !== 'undefined') {
-        const BASE = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : 'http://10.196.124.173:5000/';
+        const BASE = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : 'http://180.235.121.253:8071';
         const fullUrl = picUrl.startsWith('http') ? picUrl : (BASE + (picUrl.startsWith('/') ? picUrl.slice(1) : picUrl));
-        
+
         imgEl.onerror = () => {
             imgEl.style.display = 'none';
             defEl.style.display = 'flex';
         };
-        
+
         imgEl.src = fullUrl;
         imgEl.style.display = 'block';
         defEl.style.display = 'none';

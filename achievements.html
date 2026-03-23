@@ -4,7 +4,7 @@
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 24px;
     }
-    
+
     .badge-card {
         padding: 32px 20px;
         text-align: center;
@@ -27,8 +27,16 @@
         display: block;
     }
 
-    .badge-title { font-weight: 800; margin-bottom: 4px; }
-    .badge-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+    .badge-title {
+        font-weight: 800;
+        margin-bottom: 4px;
+    }
+
+    .badge-desc {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
 </style>
 
 <div class="main-wrapper">
@@ -36,7 +44,9 @@
         <header class="page-header" style="display: flex; align-items: center; gap: 20px;">
             <button class="back-btn" onclick="window.history.back()">
 
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
             </button>
             <div>
                 <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--primary-dark);">Your Achievements</h1>
@@ -66,7 +76,7 @@
 
         function displayBadges(achievements) {
             const container = document.getElementById('badgeGrid');
-            if(!container) return;
+            if (!container) return;
             container.innerHTML = '';
 
             const allBadges = [
