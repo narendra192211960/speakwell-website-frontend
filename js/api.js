@@ -1,5 +1,5 @@
 // Use the provided desktop IP address for the backend
-const BASE_URL = 'http://10.196.124.173:5000/';
+const BASE_URL = 'http://180.235.121.253:8071';
 window.BASE_URL = BASE_URL;
 
 const API = {
@@ -60,15 +60,15 @@ const API = {
     // Practice & Progress
     getExercises: () => API.get('get_exercises'),
     getExerciseStats: (userId) => API.get(`get_exercise_stats/${userId}`),
-    saveAttempt: (userId, sessionId, exerciseName, expected, actual, score, feedback) => 
-        API.post('save_attempt', { 
-            user_id: userId, 
-            session_id: sessionId, 
+    saveAttempt: (userId, sessionId, exerciseName, expected, actual, score, feedback) =>
+        API.post('save_attempt', {
+            user_id: userId,
+            session_id: sessionId,
             exercise_name: exerciseName,
-            expected_sentence: expected, 
-            recognized_text: actual, 
-            accuracy: score, 
-            feedback: feedback 
+            expected_sentence: expected,
+            recognized_text: actual,
+            accuracy: score,
+            feedback: feedback
         }),
     getProgress: (userId) => API.get(`get_progress/${userId}`),
     getAchievements: (userId) => API.get(`get_achievements/${userId}`),
@@ -82,15 +82,15 @@ const API = {
         const dt = new Date(`${dateStr}T${timeStr}`);
         const formattedDate = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         const formattedTime = dt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-        
-        return API.post('save_schedule', { 
-            user_id: userId, 
-            scheduled_date: formattedDate, 
-            scheduled_time: formattedTime 
+
+        return API.post('save_schedule', {
+            user_id: userId,
+            scheduled_date: formattedDate,
+            scheduled_time: formattedTime
         });
     },
     deleteSchedule: (scheduleId, userId) => API.post('delete_schedule', { id: scheduleId, user_id: userId }),
-    
+
     // AI Chatbot
     chatWithGemini: (model, data) => {
         const url = `v1beta/models/${model}:generateContent`;
@@ -102,7 +102,7 @@ const API = {
         const formData = new FormData();
         formData.append('user_id', userId);
         formData.append('image', file);
-        
+
         try {
             const response = await fetch(`${BASE_URL}upload_profile_picture`, {
                 method: 'POST',
